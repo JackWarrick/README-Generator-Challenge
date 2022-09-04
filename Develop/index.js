@@ -14,10 +14,12 @@
 // // Function call to initialize app
 // init();
 
-
+// // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+
+// Create an array of questions for user input
 inquirer
   .prompt([
     {
@@ -56,10 +58,22 @@ inquirer
     },
 
     {
-      type: 'checkbox',
+      type: 'list',
       message: 'License:',
       name: 'license',
-      choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+      choices: ['MIT License', 'Apache License 2.0', 'BSD License', 'GPL License', 'ISC License', 'Mozilla Public License 2.0'],
+    },
+
+    {
+      type: 'input',
+      message: 'Please provide your GitHub username:',
+      name: 'username',
+    },
+
+    {
+      type: 'input',
+      message: 'Please provide your email address:',
+      name: 'email',
     },
 
 
@@ -86,25 +100,30 @@ inquirer
 // THEN I am taken to the corresponding section of the README
 
   ])
+  // TODO: Create a function to write README file
   .then((data) => {
 
 const README = `
+
+
 
 # Title: ${data.title} 
 
 ## Table of Contents
 
-* [Description](Somehow get link to description)
+* [Description](#description)
 
-* [Installation](Link)
+* [Installation](#installation)
 
-* [Usage](Link)
+* [Usage](#usage)
 
-* [Contributing](Link)
+* [Contributing](#contributing)
 
-* [Tests](Link)
+* [Tests](#tests)
 
-* [License]()
+* [License](#license)
+
+* [Questions](#questions)
 
 ## Description
 
@@ -130,9 +149,15 @@ ${data.tests}
 
 ${data.license}
 
+## Questions
+
+For more information, please reference my GitHub profile [here](https://github.com/${data.username}), or reach out to my email: ${data.email}.
+
 
 
 `
+
+
 
     fs.writeFile('README.md', README, (err) =>
    err ? console.log(err) : console.log('Success!')
