@@ -61,7 +61,7 @@ inquirer
       type: 'list',
       message: 'License:',
       name: 'license',
-      choices: ['MIT License', 'Apache License 2.0', 'BSD License', 'GPL License', 'ISC License', 'Mozilla Public License 2.0'],
+      choices: ['MIT License', 'Apache 2.0 License', 'BSD 3-Clause License', 'GNU GPL v3 License', 'ISC License', 'Mozilla Public License 2.0'],
     },
 
     {
@@ -75,37 +75,36 @@ inquirer
       message: 'Please provide your email address:',
       name: 'email',
     },
-
-
-
-//       GIVEN a command-line application that accepts user input
-// WHEN I am prompted for information about my application repository
-// THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-// WHEN I enter my project title
-// THEN this is displayed as the title of the README
-
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-
-// WHEN I enter my GitHub username
-// THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-// WHEN I enter my email address
-// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-
-// WHEN I click on the links in the Table of Contents
-// THEN I am taken to the corresponding section of the README
-
   ])
-  // TODO: Create a function to write README file
+
+
+
+  // Create a function to write README file
   .then((data) => {
 
+
+    // Get badges with switch statement - used info from https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba for badges
+  const licenseBadge = (data) => {
+      switch (data){
+        case 'MIT License':
+          return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+        case 'Apache 2.0 License':
+          return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+        case 'BSD 3-Clause License':
+          return `[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`;
+        case  'GNU GPL v3 License':
+          return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
+        case 'ISC License':
+          return `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
+        case 'Mozilla Public License 2.0':
+          return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`;
+      }
+    }
+
+
+ //README content   
 const README = `
-
-
+${licenseBadge(data.license)}
 
 # Title: ${data.title} 
 
@@ -147,17 +146,13 @@ ${data.tests}
 
 ## License
 
-${data.license}
+This application is covered under the ${data.license}.
 
 ## Questions
 
 For more information, please reference my GitHub profile [here](https://github.com/${data.username}), or reach out to my email: ${data.email}.
 
-
-
 `
-
-
 
     fs.writeFile('README.md', README, (err) =>
    err ? console.log(err) : console.log('Success!')
