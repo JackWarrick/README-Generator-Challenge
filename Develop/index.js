@@ -1,26 +1,10 @@
-// // TODO: Include packages needed for this application
-//DONE
-// // TODO: Create an array of questions for user input
-// const questions = [];
-//DONE
-
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
-
-// // Include packages needed for this application
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
 
 // Create an array of questions for user input
-inquirer
+const createReadme = inquirer
   .prompt([
     {
       type: 'input',
@@ -103,7 +87,7 @@ inquirer
 
 
  //README content   
-const README = `
+ const README = `
 ${licenseBadge(data.license)}
 
 # Title: ${data.title} 
@@ -154,7 +138,16 @@ For more information, please reference my GitHub profile [here](https://github.c
 
 `
 
-    fs.writeFile('README.md', README, (err) =>
+// Use fs (file system) .writeFile to create the readme with the README content
+fs.writeFile('README.md', README, (err) =>
    err ? console.log(err) : console.log('Success!')
     );
   }); 
+
+// Create a function to initialize app
+function init() {
+createReadme;
+}
+
+// Function call to initialize app
+init();
