@@ -35,17 +35,23 @@ This application is covered under the MIT License.
 
 ## Media
 
-[Link to Demonstration Video](Link)
+[Link to Demonstration Video](https://drive.google.com/file/d/13a26kO73HPWWZWrM-rMdMXLnrwOnqYur/view)
 
 -----
+
+**Screenshot of answered prompts:**
 
 ![Screenshot of answered prompts](Develop/assets/README-generator-prompts-answered.jpeg)
 
 -----
 
+**Screenshot of raw README:**
+
 ![Screenshot of raw README](Develop/assets/README-raw-screenshot.jpeg)
 
 -----
+
+**Screenshot of README in preview form:**
 
 ![Screenshot of README in preview form](Develop/assets/README-preview-screenshot.jpeg)
 
