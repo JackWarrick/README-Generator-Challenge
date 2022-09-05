@@ -37,11 +37,20 @@ This application is covered under the MIT License.
 
 [Link to Demonstration Video](Link)
 
-![Screenshot of answered prompts](assets/README-generator-prompts-answered.jpeg)
+-----
 
-![Screenshot of raw README](assets/README-raw-screenshot.jpeg)
+![Screenshot of answered prompts](Develop/assets/README-generator-prompts-answered.jpeg)
 
-![Screenshot of README in ](assets/README-preview-screenshot.jpeg)
+-----
+
+![Screenshot of raw README](Develop/assets/README-raw-screenshot.jpeg)
+
+-----
+
+![Screenshot of README in preview form](Develop/assets/README-preview-screenshot.jpeg)
+
+-----
+
 
 ## Questions
 
